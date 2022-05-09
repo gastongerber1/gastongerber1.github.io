@@ -99,7 +99,42 @@ goTop.addEventListener('click', (e) =>{
 //     document.documentElement.scrollTop = 4600;
 // });
 
+window.onload = function (){
+
+    var fullname = document.getElementById("user");
+    var email = document.getElementById("email");
+    var mensaje = document.getElementById("mensaje");
+
+    fullname.addEventListener('blur', blurName);
+    fullname.addEventListener('focus', focusName);
+
+
+    function validateName(name) {
+        var stop = true;
+        var i = 0;
+        
+        if (name.length > 3) {
+          while (i < name.length && stop === true) {
+            if (!isNaN(name[i])) {
+              stop = false;
+            }
+            i++;
+          }
+        } else {
+          stop = false;
+        }
+        return stop;
+      }
+
+    function blurName(){
+        if(!validateName(fullname.value)){
+            fullname.style.border = "3px solid yellow";
+        } else{
+            fullname.style.border = "3px solid green";
+        }
+    }
 
 
 
 
+}
