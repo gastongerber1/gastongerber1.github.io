@@ -331,7 +331,7 @@ body{
 .our-projects .container-project .project-title h2{
     font-size: 40px;
     color: #fff;
-    font-weight: normals;
+    font-weight: normal;
 }
 
 .our-projects .container-project .project-title hr{
@@ -525,7 +525,8 @@ body{
 
 .footer .footer-content .formulario-content{
     width: 60%;
-    background: #fff;
+    background: rgba(0, 0, 0, 0.2);
+    
     border-radius: 24px;
     border: 2px solid var(--red);
     margin: 50px auto;
@@ -539,9 +540,10 @@ body{
     flex-direction: column;
 }
 
+
 #formulario label{
     text-align: center;
-    color: var(--black);
+    color: var(--white);
     font-size: 22px;
     margin: 30px 0px 10px 0px;
 }
@@ -566,6 +568,10 @@ body{
     font-size: 15px;
     color: var(--black);
     padding: 20px;
+}
+
+.mensaje-form{
+    color: var(--white);
 }
 
 #formulario .send{
@@ -870,4 +876,11 @@ body{
 
     .footer-text{width: 100%; padding: 0px 30px;}
     .footer-text p{font-size: 11px;}
+}
+
+
+.alert{
+    background-color: var(--red);
+    color: #fff;
+    font-size: 20px;
 }

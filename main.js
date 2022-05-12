@@ -108,12 +108,15 @@ window.onload = function (){
     fullname.addEventListener('blur', blurName);
     fullname.addEventListener('focus', focusName);
 
+    email.addEventListener('blur', blurEmail);
+    email.addEventListener('focus', focusEmail);
+
 
     function validateName(name) {
         var stop = true;
         var i = 0;
         
-        if (name.length > 3) {
+        if (name.length >= 3) {
           while (i < name.length && stop === true) {
             if (!isNaN(name[i])) {
               stop = false;
@@ -128,13 +131,60 @@ window.onload = function (){
 
     function blurName(){
         if(!validateName(fullname.value)){
-            fullname.style.border = "3px solid yellow";
+            fullname.style.border = "3px solid green";
         } else{
             fullname.style.border = "3px solid green";
         }
     }
 
+    function focusName() {
+        fullname.style.border = "3px solid #08d9d6";
+      }
 
 
+      function validateEmail() {
+        var mailformat = /[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]{2,3}/;
+        if (mailformat.test(email.value)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
 
+
+      function blurEmail(){
+        if(!validateEmail){
+            email.style.border = "3px solid green";
+        } else{
+            email.style.border = "3px solid green";
+        }
+    }
+    function focusEmail(){
+        email.style.border = "3px solid #08d9d6";
+    }
+
+}
+
+document.querySelector('.send').addEventListener('click', (e)=>{
+        e.preventDefault();
+        showAlert('Formulario enviado');
+        clearFields();
+})
+
+function clearFields() {
+    document.querySelector('#user').value = '';
+    document.querySelector('#email').value = '';
+    document.querySelector('#mensaje').value = '';
+}
+
+function showAlert(message) {
+    const div = document.createElement('div');
+    div.className = `alert`;
+    div.appendChild(document.createTextNode(message));
+    const formulario = document.querySelector('#formulario');
+    const send = document.querySelector('#send');
+    formulario.insertBefore(div, send);
+
+    // Vanish in 3 seconds
+    setTimeout(() => document.querySelector('.alert').remove(),3000);
 }
